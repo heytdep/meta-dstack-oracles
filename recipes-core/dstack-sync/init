@@ -1,0 +1,60 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:             dstack-sync
+# Required-Start:       $remote_fs $syslog $networking
+# Required-Stop:        $remote_fs $syslog
+# Default-Start:        2 3 4 5
+# Default-Stop:         1
+# Short-Description:    Start and stop the dstack-sync daemon
+### END INIT INFO
+
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+NAME=dstack-sync
+DESC="Dstack Sync"
+DAEMON=/usr/bin/mini-server
+LOGFILE=/var/log/dstack-sync.log
+LOGFILE_MONITOR=/var/log/dstack-sync_monitor.log
+PIDFILE=/var/run/dstack-sync.pid
+PIDFILE_MONITOR=/var/run/dstack-sync_monitor.pid
+SYSTEM_API_FIFO=/var/volatile/system-api.fifo
+
+
+start() {
+    # NB: this is a very rudimental implementation that should not be taken
+    # as a standard: we're embedding everything at system level without measuring
+    # the application (since image-wise there is none). This means that any changes
+    # to the environment variables will be accounted for as measurements, which is
+    # not what we want to achieve in our case. Produciton-level images will enable the vm
+    # builder to configure the app layer to have environemnt variables that do not impact
+    # measurements (simply ignored). 
+    
+    # to join a bootstrapped p2p network
+    # export PEERS="someaddress:someport"
+    
+    # too bootstrap
+    mkdir /home/root/created
+    exec $DAEMON
+}
+
+stop() {
+    mkdir /home/root/stopped
+}
+
+case "$1" in
+  start)
+	start
+	;;
+  stop)
+	stop
+	;;
+  restart)
+	stop
+	start
+	;;
+  *)
+	echo "Usage: $0 {start|stop|restart}" >&2
+	exit 1
+	;;
+esac
+
+exit 0

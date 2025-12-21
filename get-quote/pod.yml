@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: get-quote-test
+spec:
+  hostNetwork: true
+  containers:
+    - name: get-quote-container
+      image: docker.io/xycloo/get-quote-test:latest

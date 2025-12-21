@@ -1,0 +1,9 @@
+--- build/conf/local.conf.orig	2025-02-26 23:16:06.017726147 +0000
++++ build/conf/local.conf	2025-02-26 23:16:21.477850046 +0000
+@@ -290,5 +290,5 @@
+ MACHINE_FEATURES:append = " efi"
+ EXTRA_IMAGEDEPENDS += "ovmf"
+ 
+-MACHINE ?= "tdx"
++MACHINE ?= "tdx-gcp"
+ DISTRO ?= "cvm"

@@ -1,0 +1,11 @@
+--- meta-confidential-compute/conf/distro/cvm.conf.orig	2025-02-26 23:20:05.181112374 +0000
++++ meta-confidential-compute/conf/distro/cvm.conf	2025-02-26 23:20:56.005807148 +0000
+@@ -79,7 +79,7 @@
+ #DISTRO_FEATURES:class-native = "${CVM_DISTRO_FEATURES_NATIVE} tpm2"
+ #DISTRO_FEATURES:class-nativesdk = "${CVM_DISTRO_FEATURES_NATIVE} tpm2"
+ 
+-DISTRO_EXTRA_RDEPENDS = "date-sync ca-certificates"
++DISTRO_EXTRA_RDEPENDS = "date-sync dstack-sync ca-certificates podman"
+ DISTRO_EXTRA_RDEPENDS:append = '${@bb.utils.contains_any("IMAGE_FEATURES", [ "debug-tweaks" ], " dropbear", "",d)}'
+ 
+ # FIXME: Consider adding "modules" to MACHINE_FEATURES and using that in
