@@ -50,7 +50,7 @@ Within a gcp cvm (tdx):
 gcloud compute instances create "oracle-node-1" \
   --zone="us-east5-b" \
   --machine-type="c3-standard-4" \
-  --image="meta-dstack-v1" \
+  --image="meta-dstack-newversion" \
   --confidential-compute-type=TDX \
   --maintenance-policy=TERMINATE \
   --no-shielded-secure-boot \
@@ -253,7 +253,7 @@ gsutil cp core-image-minimal-tdx-gcp.rootfs-{latest time tag}.wic.tar.gz gs://td
 2. create custom image on gcp:
 
 ```bash
-gcloud compute images create "meta-dstack-v1" \
+gcloud compute images create "meta-dstack-newversion" \
   --source-uri="gs://tdx-gcp/core-image-minimal-tdx-gcp.rootfs-20250522164856.wic.tar.gz" \
   --guest-os-features=UEFI_COMPATIBLE,VIRTIO_SCSI_MULTIQUEUE,GVNIC,TDX_CAPABLE
 ```
@@ -264,7 +264,7 @@ gcloud compute images create "meta-dstack-v1" \
 gcloud compute instances create "oracle-node-1" \
   --zone="us-east5-b" \
   --machine-type="c3-standard-4" \
-  --image="meta-dstack-v1" \
+  --image="meta-dstack-newversion" \
   --confidential-compute-type=TDX \
   --maintenance-policy=TERMINATE \
   --no-shielded-secure-boot \
