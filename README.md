@@ -25,7 +25,6 @@ the quote binds the signer's public key to the TEE measurements. the signatures 
 
 ## architecture
 
-```
 Within a gcp cvm (tdx):
 
 1. meta-dstack server
